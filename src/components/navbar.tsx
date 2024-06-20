@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -20,7 +20,6 @@ export const Navbar = () => {
       <button onClick={() => navigate("/pos")}>
         Go to POS | using useNavigate hook
       </button>
-      <Outlet />
     </>
   );
 };

@@ -1,23 +1,33 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { Navbar } from "./components/navbar.tsx";
-import { Members } from "./components/members.tsx";
-import { Pos } from "./components/pos.tsx";
-import { NotFound } from "./components/notFound.tsx";
-import { MemberProfile } from "./components/memberProfile.tsx";
+import { useLocation } from "react-router-dom";
+import { Suspense, useRef } from "react";
+import { CSSTransition, SwitchTransition } from "react-transition-group";
+import { allRoutes } from "./routes.tsx";
 
 function App() {
+  const nodeRef = useRef(null);
+
+  const location = useLocation();
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          {/*<Route index element={<Members />} />*/}
-          <Route path="members" element={<Members />} />
-          <Route path="pos" element={<Pos />} />
-          <Route path="members/:id" element={<MemberProfile />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <SwitchTransition>
+        <CSSTransition
+          key={location.pathname}
+          nodeRef={nodeRef} // Pass the ref to CSSTransition
+          classNames="fade"
+          timeout={300}
+          unmountOnExit
+        >
+          <div ref={nodeRef}>
+            {" "}
+            {/* Apply the ref to the transition wrapper */}
+            <Suspense fallback={<h1>Loading...</h1>}>
+              {allRoutes(location)}
+            </Suspense>
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
     </>
   );
 }
