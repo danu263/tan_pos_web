@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Navbar } from "./navbar.tsx";
+import { Drawer } from "./sidebar/drawer.tsx";
 // import {Members} from "./members.tsx";
 import { MemberProfile } from "./memberProfile.tsx";
 import { Pos } from "./pos.tsx";
@@ -11,7 +11,7 @@ const Members = lazy(() =>
 export const Test = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navbar />}>
+      <Route path="/" element={<Drawer />}>
         <Route path="/members" element={<Members />} />
         <Route path="/members/:id" element={<MemberProfile />} />
         <Route path="/pos" element={<Pos />} />

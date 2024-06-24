@@ -22,6 +22,11 @@ const MemberProfile = lazy(() =>
 const Pos = lazy(() =>
   import("./components/pos.tsx").then((module) => ({ default: module.Pos })),
 );
+const Dispatch = lazy(() =>
+  import("./components/dispatch.tsx").then((module) => ({
+    default: module.Dispatch,
+  })),
+);
 
 const publicRoutes = (
   <Route>
@@ -36,6 +41,7 @@ const privateRoutes = (
     <Route path="/members" element={<Members />} />
     <Route path="/members/:id" element={<MemberProfile />} />
     <Route path="/pos" element={<Pos />} />
+    <Route path="/dispatch" element={<Dispatch />} />
   </Route>
 );
 
