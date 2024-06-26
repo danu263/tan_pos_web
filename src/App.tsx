@@ -19,7 +19,11 @@ function App() {
           timeout={300}
           unmountOnExit
         >
-          <div ref={nodeRef}>
+          <div
+            id="main-app"
+            ref={nodeRef}
+            style={{ height: "100%", width: "100%" }}
+          >
             {" "}
             {/* Apply the ref to the transition wrapper */}
             <Suspense fallback={<h1>Loading...</h1>}>

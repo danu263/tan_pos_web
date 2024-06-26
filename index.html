@@ -6,9 +6,30 @@
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <title>Vite + React + TS</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        place-items: center;
+        min-width: 320px;
+        min-height: 100vh;
+      }
+
+      #TAN-POS {
+        width: 100%;
+        height: 100%;
+        background-color: lightblue; /* Optional: just for visual confirmation */
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="TAN-POS"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

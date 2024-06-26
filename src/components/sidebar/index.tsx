@@ -10,23 +10,42 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import { useState } from "react";
 import { Drawer } from "./drawer.tsx";
 import { Rail } from "./rail.tsx";
+import {
+  SIDEBAR_HEIGHT,
+  SIDEBAR_MODE,
+  TSidebarMode,
+} from "../../routing/privateApp.tsx";
 
-const drawerWidth = 240;
-
-export const Sidebar = () => {
+export const Sidebar = ({
+  setMode,
+}: {
+  setMode: (mode: TSidebarMode) => void;
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleDrawerOpen = () => {
+    setMode(SIDEBAR_MODE.DRAWER);
     setOpen(true);
   };
 
   const handleDrawerClose = () => {
+    setMode(SIDEBAR_MODE.RAIL);
     setOpen(false);
   };
 
+  const getWidth = () => {
+    let width;
+    if (open) {
+      width = SIDEBAR_MODE.DRAWER.width;
+    } else {
+      width = SIDEBAR_MODE.RAIL.width;
+    }
+    return `${width}px`;
+  };
+
   return (
-    <div>
-      <AppBar position="fixed" open={open}>
+    <div id="tan-sidebar" style={{ width: getWidth() }}>
+      <AppBar id="tan-app-bar" position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -45,9 +64,9 @@ export const Sidebar = () => {
       <Drawer
         open={open}
         handleDrawerClose={handleDrawerClose}
-        drawerWidth={drawerWidth}
+        drawerWidth={SIDEBAR_MODE.DRAWER.width}
       />
-      <Rail />
+      <Rail width={SIDEBAR_MODE.RAIL.width} />
     </div>
   );
 };
@@ -63,9 +82,10 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  height: SIDEBAR_HEIGHT,
   ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
+    width: `calc(100% - ${SIDEBAR_MODE.DRAWER.width}px)`,
+    marginLeft: `${SIDEBAR_MODE.DRAWER.width}px`,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,

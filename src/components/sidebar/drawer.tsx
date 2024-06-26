@@ -30,6 +30,7 @@ export const Drawer = ({
   return (
     <>
       <MuiDrawer
+        id="tan-drawer"
         sx={{
           width: drawerWidth,
           flexShrink: 0,

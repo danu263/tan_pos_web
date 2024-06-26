@@ -14,7 +14,7 @@ import {
 } from "@mui/icons-material";
 import { useState } from "react";
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const toolbarRelativeStyles = (property: string, theme: Theme) => {
   return Object.keys(theme.mixins.toolbar).reduce((style, key) => {
@@ -34,14 +34,23 @@ const toolbarRelativeStyles = (property: string, theme: Theme) => {
   }, {});
 };
 
-export const Rail = () => {
-  const navigate = useNavigate();
-  const [value, setValue] = useState("");
-  console.log("Rail", value);
+export const Rail = ({ width }: { width: number }) => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  const [path, setPath] = useState("");
+  console.log("Rail", path, location);
+
+  const goTo = () => {
+    console.log(`value: ${path}`);
+    return <Navigate to={path} />;
+  };
+
   return (
     <>
       <NavigationRail
-        value={value}
+        id="tan-rail"
+        width={width}
+        value={currentPath}
         onChange={(event: React.SyntheticEvent, newValue: string) => {
           console.log("event, newValue", {
             event,
@@ -49,10 +58,12 @@ export const Rail = () => {
             newValue,
             a: 2,
           });
-          navigate(newValue);
-          setValue(newValue);
+          // redirect("/pos");
+          setPath(newValue);
+          goTo();
         }}
       >
+        {path && goTo()}
         <NavigationRailAction
           value="/pos"
           label="All Files"
@@ -81,10 +92,12 @@ export const Rail = () => {
 // main-component
 interface NavigationRailProps extends BottomNavigationProps {
   disableDivider?: boolean;
+  width: number;
 }
 
 const NavigationRail: React.FC<NavigationRailProps> = ({
   disableDivider = false,
+  width,
   ...props
 }) => {
   return (
@@ -94,7 +107,7 @@ const NavigationRail: React.FC<NavigationRailProps> = ({
         flexDirection: "column",
         justifyContent: "flex-start",
         height: "unset",
-        width: 72,
+        width: width,
         padding: "8px 0px",
         position: "fixed",
         top: 0,

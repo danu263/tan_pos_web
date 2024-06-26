@@ -9,13 +9,16 @@ import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 // import RouterUtils from "./provider/RouterUtils.tsx";
 import { StaticRouter } from "react-router-dom/server";
+import { ThemeCustomization } from "./theme";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("TAN-POS")!).render(
   <React.StrictMode>
     <BrowserRouter>
       {/*<StaticRouter location={"/"}>*/}
       {/*<RouterUtils>*/}
-      <App />
+      <ThemeCustomization>
+        <App />
+      </ThemeCustomization>
       {/*</RouterUtils>*/}
       {/*</StaticRouter>*/}
     </BrowserRouter>
