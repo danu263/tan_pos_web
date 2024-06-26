@@ -1,13 +1,16 @@
 import type {} from "@mui/material/styles";
 
 declare module "@mui/material/styles" {
-  // interface PaletteColor {
-  //   darker?: string;
-  // }
+  interface PaletteColor {
+    container?: string;
+    onContainer?: string;
+  }
 
   interface SimplePaletteColorOptions {
     container?: string;
     onContainer?: string;
+    onSurface?: string;
+    outline?: string;
   }
 
   interface Palette {

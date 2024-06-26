@@ -9,6 +9,8 @@ export const Palette = () => {
       default: {
         main: "#1a1c1e", //TAN/TAN Black - on surface
         light: "#43474e", //TAN/TAN Black Alt - on surface variant
+        onSurface: "#1a1c1e", //TAN/TAN Black - on surface
+        outline: "#76777a", //TAN/TAN Black - outline
       },
       common: {
         white: "#FFFFFF",
@@ -57,7 +59,7 @@ export const Palette = () => {
         900: "#202020", // mono.20
       },
       text: {
-        primary: "#1a1c1e", //brand.black
+        primary: "#1a1c1e", //brand.black // on surface
         secondary: "#005faf", //brand.retailAlt
         disabled: "#1A1C1E61",
       },
@@ -72,7 +74,7 @@ export const Palette = () => {
         20: "#2f3033",
         30: "#45474a",
         40: "#5d5e61",
-        50: "#76777a",
+        50: "#76777a", // outline
         60: "#909094",
         70: "#aaabae",
         80: "#c6c6c9",
