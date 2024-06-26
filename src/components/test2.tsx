@@ -1,8 +1,7 @@
-import { Link, Outlet, redirect, useNavigate } from "react-router-dom";
+import { Link, Outlet, redirect } from "react-router-dom";
 import { useState } from "react";
 
 export const Test2 = () => {
-  const navigate = useNavigate();
   const [buttonClicked, setButtonClicked] = useState(0);
 
   const onClick = (buttonKey: number, url: string) => {

@@ -8,7 +8,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { BrowserRouter } from "react-router-dom";
 // import RouterUtils from "./provider/RouterUtils.tsx";
-import { StaticRouter } from "react-router-dom/server";
+// import { StaticRouter } from "react-router-dom/server";
 import { ThemeCustomization } from "./theme";
 
 ReactDOM.createRoot(document.getElementById("TAN-POS")!).render(
